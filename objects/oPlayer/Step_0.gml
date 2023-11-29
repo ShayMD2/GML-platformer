@@ -12,10 +12,7 @@ hsp = _move * walksp;
 
 vsp = vsp + grv;
 
-if (place_meeting(x,y+1,oWall)) && (key_jump)
-{
-	 vsp = -jumpsp
-}
+
 //horizantal collision 
 if (place_meeting(x+hsp,y,oWall))
 {
@@ -36,6 +33,14 @@ if (place_meeting(x,y+vsp,oWall))
 	  }
       vsp = 0;
 }
+	  jump_current = jump_max;
+	  if (key_jump)
+	  {
+		  if (jump_current > 0) 
+			  vsp = -jumpsp;
+			  jump_current -= 1;
+	  }
+	  
 y = y + vsp;
 
 //Animation
@@ -51,13 +56,14 @@ else
 {
 	image_speed = 1;
 	if (hsp = 0)
-     {
+{
 		sprite_index = sPlayer;
 	}
 	else
     {
 		sprite_index = sPlayerR
 	}
-}
+
 
 if (hsp !=0) image_xscale = sign(hsp) ;
+}
